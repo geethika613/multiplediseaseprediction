@@ -5,7 +5,6 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 
 
-# loading the saved models
 
 diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
 
@@ -15,7 +14,7 @@ parkinsons_model = pickle.load(open('parkinsons_model.sav', 'rb'))
 
 
 
-# sidebar for navigation
+
 with st.sidebar:
     
     selected = option_menu('Multiple Disease Prediction System',
@@ -27,14 +26,14 @@ with st.sidebar:
                           default_index=0)
     
     
-# Diabetes Prediction Page
+
 if (selected == 'Diabetes Prediction'):
     
     # page title
     st.title('Diabetes Prediction using ML')
     
     
-    # getting the input data from the user
+ 
     col1, col2, col3 = st.columns(3)
     
     with col1:
@@ -62,10 +61,10 @@ if (selected == 'Diabetes Prediction'):
         Age = st.text_input('Age of the Person')
     
     
-    # code for Prediction
+  
     diab_diagnosis = ''
     
-    # creating a button for Prediction
+   
     
     if st.button('Diabetes Test Result'):
         diab_prediction = diabetes_model.predict([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]])
@@ -80,7 +79,7 @@ if (selected == 'Diabetes Prediction'):
 
 
 
-# Heart Disease Prediction Page
+
 if (selected == 'Heart Disease Prediction'):
     
     # page title
@@ -130,10 +129,10 @@ if (selected == 'Heart Disease Prediction'):
         
      
      
-    # code for Prediction
+  
     heart_diagnosis = ''
     
-    # creating a button for Prediction
+    
     
     if st.button('Heart Disease Test Result'):
         heart_prediction = heart_disease_model.predict([[age, sex, cp, trestbps, chol, fbs, restecg,thalach,exang,oldpeak,slope,ca,thal]])                          
@@ -148,7 +147,7 @@ if (selected == 'Heart Disease Prediction'):
     
     
 
-# Parkinson's Prediction Page
+
 if (selected == "Parkinsons Prediction"):
     
     # page title
@@ -224,10 +223,10 @@ if (selected == "Parkinsons Prediction"):
         
     
     
-    # code for Prediction
+ 
     parkinsons_diagnosis = ''
     
-    # creating a button for Prediction    
+ 
     if st.button("Parkinson's Test Result"):
         parkinsons_prediction = parkinsons_model.predict([[fo, fhi, flo, Jitter_percent, Jitter_Abs, RAP, PPQ,DDP,Shimmer,Shimmer_dB,APQ3,APQ5,APQ,DDA,NHR,HNR,RPDE,DFA,spread1,spread2,D2,PPE]])                          
         
